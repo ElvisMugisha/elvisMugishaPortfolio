@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="Software developer | Full-stack developer | Bubble developer |Front-end developer | Back-end developer | Freelancer">
+        <meta name="author" content="Elvis Mugisha">
+
+        <title>Elvis Mugisha</title>
+
+        <link rel="icon" type="image/png" href="{% static 'assets/img/favicon.png' %}">
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+            crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+    </head>
+    <body>
+        <div class="d-flex bg-dark" id="wrapper">
+            <!-- Sidebar-->
+            <div class="bg-dark" id="sidebar-wrapper">
+                <div class="sidebar-links">
+
+                    <div class="sidebar-heading">
+                        <img class="logo" src="{% static 'assets/img/logo/logo-white-on-transparent-background.png' %}" alt="ElvisMugisha">
+                    </div>
+
+                    <div class="d-flex align-items-start">
+                        <div
+                            class="nav flex-column nav-pills me-3 p-4"
+                            id="v-pills-tab"
+                            role="tablist"
+                            aria-orientation="vertical">
+
+                            <button
+                                class="nav-link active"
+                                id="v-pills-about-tab"
+                                data-bs-toggle="pill"
+                                data-bs-target="#v-pills-about"
+                                type="button"
+                                role="tab"
+                                aria-controls="v-pills-about"
+                                aria-selected="true">
+                                About
+                            </button>
+
+                            <button
+                                class="nav-link"
+                                id="v-pills-experience-tab"
+                                data-bs-toggle="pill"
+                                data-bs-target="#v-pills-experience"
+                                type="button"
+                                role="tab"
+                                aria-controls="v-pills-experience"
+                                aria-selected="false">
+                                Experience
+                            </button>
+
+                            <button
+                                class="nav-link"
+                                id="v-pills-service-tab"
+                                data-bs-toggle="pill"
+                                data-bs-target="#v-pills-service"
+                                type="button"
+                                role="tab"
+                                aria-controls="v-pills-service"
+                                aria-selected="false">
+                                My Services
+                            </button>
+
+                            <button
+                                class="nav-link"
+                                id="v-pills-portfolio-tab"
+                                data-bs-toggle="pill"
+                                data-bs-target="#v-pills-portfolio"
+                                type="button"
+                                role="tab"
+                                aria-controls="v-pills-portfolio"
+                                aria-selected="false">
+                                Portfolio
+                            </button>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- Page content wrapper-->
+            <div class="bg-dark" id="page-content-wrapper">
+
+                <div class="container-fluid">
+                    <button class="btn-toggle" id="sidebarToggle">
+                        <i class="fa-solid fa-bars-staggered" style="font-size: 25px;"></i>
+                    </button>
+                </div>
+
+                <div class="container-fluid">
+
+                    <div class="sidebar-links">
+                        <div class="d-flex align-items-start">
+                            <div>
+                                <div class="tab-content" id="v-pills-tabContent">
+
+                                    <div
+                                        class="tab-pane fade show active"
+                                        id="v-pills-about"
+                                        role="tabpanel"
+                                        aria-labelledby="v-pills-about-tab"
+                                        tabindex="0">
+
+                                        {% for about in about_me %}
+                                        {% if about %}
+
+                                        <div class="profile">
+                                            <div class="img">
+                                                <img class="img-circle" src="{{ about.profile_pic.url }}" alt="ElvisMugisha">
+                                            </div>
+
+                                            <div class="profile-info">
+                                                <h1 class="mt-4">
+                                                    <p class="greating">Hello, I'm</p>
+                                                    <p class="profile-name">{{ about.first_name }} {{ about.last_name|capfirst }}</p>
+                                                    <p class="text-color">
+                                                        A
+                                                        <span class="typing-text"></span>
+                                                        <span class="cursor">&nbsp;</span>
+                                                    </p>
+                                                </h1>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row">
+
+                                            <div class="col-md-8">
+                                                <div class="overflow-auto4">
+                                                    {% for info in infos %}
+                                                    {% if info.about.id == about.id %}
+                                                    <p> {{ info.description|capfirst }} </p>
+                                                    {% endif %}
+                                                    {% endfor %}
+
+                                                    <div class="social-icon-list">
+                                                        <ul>
+                                                            {% for social_media in social_medias %}
+                                                            {% if social_media.about.id == about.id %}
+                                                            <li style="--i:#050505;--j:#050505;">
+                                                                <a href="{{ social_media.github }}" target="_blank">
+                                                                    <span class="icon">
+                                                                        <i class="fa-brands fa-github"></i>
+                                                                    </span>
+                                                                    <!-- <span class="titulo">GitHub</span> -->
+                                                                </a>
+                                                            </li>
+
+                                                            <li style="--i:#0072b1; --j:#0072b1;">
+                                                                <a href="{{ social_media.linkedin }}" target="_blank">
+                                                                    <span class="icon">
+                                                                        <i class="fa-brands fa-linkedin-in"></i>
+                                                                    </span>
+                                                                    <!-- <span class="titulo">LinkedIn</span> -->
+                                                                </a>
+                                                            </li>
+
+                                                            <li style="--i:#cd486b; --j:#cd486b;">
+                                                                <a href="{{ social_media.instagram }}" target="_blank">
+                                                                    <span class="icon">
+                                                                        <i class="fa-brands fa-instagram"></i>
+                                                                    </span>
+                                                                    <!-- <span class="titulo">Instagram</span> -->
+                                                                </a>
+                                                            </li>
+
+                                                            <li style="--i:#3b5998; --j:#3b5998;">
+                                                                <a href="{{ social_media.facebook }}" target="_blank">
+                                                                    <span class="icon">
+                                                                        <i class="fa-brands fa-facebook"></i>
+                                                                    </span>
+                                                                    <!-- <span class="titulo">Facebook</span> -->
+                                                                </a>
+                                                            </li>
+
+                                                            <li style="--i:#00acee; --j:#00acee;">
+                                                                <a href="{{ social_media.twitter }}" target="_blank">
+                                                                    <span class="icon">
+                                                                        <i class="fa-brands fa-x-twitter"></i>
+                                                                    </span>
+                                                                    <!-- <span class="titulo">Twitter</span> -->
+                                                                </a>
+                                                            </li>
+                                                            {% endif %}
+                                                            {% endfor %}
+                                                        </ul>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <nav>
+                                                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                                        <button
+                                                            class="nav-link"
+                                                            id="nav-profile-tab"
+                                                            data-bs-toggle="tab"
+                                                            data-bs-target="#nav-profile"
+                                                            type="button"
+                                                            role="tab"
+                                                            aria-controls="nav-profile"
+                                                            aria-selected="false">
+                                                            Profile
+                                                        </button>
+
+                                                        <button
+                                                            class="nav-link active"
+                                                            id="nav-skills-tab"
+                                                            data-bs-toggle="tab"
+                                                            data-bs-target="#nav-skills"
+                                                            type="button"
+                                                            role="tab"
+                                                            aria-controls="nav-skills"
+                                                            aria-selected="true">
+                                                            Skills
+                                                        </button>
+
+                                                        <button
+                                                            class="nav-link"
+                                                            id="nav-education-tab"
+                                                            data-bs-toggle="tab"
+                                                            data-bs-target="#nav-education"
+                                                            type="button"
+                                                            role="tab"
+                                                            aria-controls="nav-education"
+                                                            aria-selected="false">
+                                                            Education
+                                                        </button>
+
+                                                        <button
+                                                            class="nav-link"
+                                                            id="nav-hobbies-tab"
+                                                            data-bs-toggle="tab"
+                                                            data-bs-target="#nav-hobbies"
+                                                            type="button"
+                                                            role="tab"
+                                                            aria-controls="nav-hobbies"
+                                                            aria-selected="false">
+                                                            Interested
+                                                        </button>
+
+                                                    </div>
+                                                </nav>
+
+                                                <div class="tab-content" id="nav-tabContent">
+                                                    <div
+                                                        class="tab-pane fade content"
+                                                        id="nav-profile"
+                                                        role="tabpanel"
+                                                        aria-labelledby="nav-profile-tab"
+                                                        tabindex="0">
+
+                                                        <span>
+                                                            Name
+                                                            <div class="animated-word">
+                                                                <div class="letter">E</div>
+                                                                <div class="letter">L</div>
+                                                                <div class="letter">V</div>
+                                                                <div class="letter">I</div>
+                                                                <div class="letter">S</div>
+                                                                <div class="letter">&nbsp;</div>
+                                                                <div class="letter">M</div>
+                                                                <div class="letter">u</div>
+                                                                <div class="letter">g</div>
+                                                                <div class="letter">i</div>
+                                                                <div class="letter">s</div>
+                                                                <div class="letter">h</div>
+                                                                <div class="letter">a</div>
+                                                            </div>
+                                                        </span>
+
+                                                        <div class="profile-p">
+                                                            <span>
+                                                                Profile
+                                                                <div class="animated-word">
+                                                                    {{ about.profile|capfirst }}
+                                                                </div>
+                                                            </span>
+                                                        </div>
+
+                                                        <div class="profile-p">
+                                                            <span>
+                                                                E-mail
+                                                                <div class="animated-word">
+                                                                    {{ about.email }}
+                                                                </div>
+                                                            </span>
+                                                        </div>
+
+                                                        <div class="profile-p">
+                                                            <span>
+                                                                Contact
+                                                                <div class="animated-word">
+                                                                    +250 {{ about.phone_number }}
+                                                                </div>
+                                                            </span>
+                                                        </div>
+
+                                                        <br>
+
+                                                        <div class="profile-p">
+                                                            <a class="contact-me" href="mailto:{{ about.email }}">
+                                                                Contact Me
+                                                            </a>
+                                                        </div>
+
+                                                        <br>
+
+                                                    </div>
+
+                                                    <div
+                                                        class="tab-pane fade show active"
+                                                        id="nav-skills"
+                                                        role="tabpanel"
+                                                        aria-labelledby="nav-skills-tab"
+                                                        tabindex="0">
+
+                                                        <div class="skills">
+
+                                                            {% for skill in skills %}
+
+                                                            {% if skill.about.id == about.id %}
+
+                                                            <div class="skill">
+                                                                <p> {{ skill.skill }} </p>
+                                                            </div>
+
+                                                            {% endif %}
+
+                                                            {% endfor %}
+
+                                                        </div>
+
+                                                        <br>
+
+                                                    </div>
+
+                                                    <div
+                                                        class="tab-pane fade"
+                                                        id="nav-education"
+                                                        role="tabpanel"
+                                                        aria-labelledby="nav-education-tab"
+                                                        tabindex="0">
+                                                        <div class="overflow-auto1">
+                                                            <div class="educations">
+                                                                {% for education in educations %}
+                                                                {% if education.about.id == about.id %}
+                                                                <div class="education">
+                                                                    <h1> {{ education.title|capfirst }} </h1>
+                                                                    <p>
+                                                                        {{ education.option }} -
+                                                                        <span> {{ education.where }} </span>
+                                                                    </p>
+                                                                    <p class="calendar">
+                                                                        <i class="fa-regular fa-calendar-days"></i>
+                                                                        {{ education.when }}
+                                                                    </p>
+                                                                </div>
+                                                                <br>
+                                                                {% endif %}
+                                                                {% endfor %}
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div
+                                                        class="tab-pane fade"
+                                                        id="nav-hobbies"
+                                                        role="tabpanel"
+                                                        aria-labelledby="nav-hobbies-tab"
+                                                        tabindex="0">
+
+                                                        <div class="skills">
+
+                                                            {% for interest in interests %}
+                                                            {% if interest.about.id == about.id %}
+                                                            <div class="skill">
+                                                                <p>
+                                                                    {% comment %} <i class="fa-solid fa-chalkboard-user"></i> {% endcomment %}
+                                                                    {{ interest.interest|capfirst }}
+                                                                </p>
+                                                            </div>
+                                                            {% endif %}
+                                                            {% endfor %}
+
+                                                        </div>
+                                                        <br>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {% else %}
+
+                                        <div class="profile">
+                                            <div class="img">
+                                                <img class="img-circle" src="{% static 'assets/img/ds.jpg' %}" alt="ElvisMugisha">
+                                            </div>
+
+                                            <div class="profile-info">
+                                                <h1 class="mt-4">
+                                                    <p class="greating">Hello, I'm</p>
+                                                    <p class="profile-name">ELVIS Mugisha</p>
+                                                    <p class="text-color">
+                                                        A
+                                                        <span class="typing-text"></span>
+                                                        <span class="cursor">&nbsp;</span>
+                                                    </p>
+                                                </h1>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row">
+
+                                            <div class="col-md-8">
+                                                <div class="overflow-auto4">
+                                                    <p>
+                                                        I am a highly skilled and dedicated software
+                                                        developer with a 3+ years of experience and a
+                                                        passion for building innovative and robust
+                                                        applications. With expertise in Python, Java, Spring
+                                                        Boot, Django, Bootstrap, Flutter, REST APIs, MySQL,
+                                                        AWS, GitHub, and so many more. I possess a universal
+                                                        skill set that allows me to dive a wide range of
+                                                        challenges in the software development landscape.
+                                                    </p>
+                                                    <p>
+                                                        As a lifelong learner, I stay up-to-date of the
+                                                        latest industry trends and emerging technologies to
+                                                        continuously enhance my abilities. My academic
+                                                        background and hands-on experience in software
+                                                        engineering have honed my problem-solving skills,
+                                                        attention to detail, and ability to deliver
+                                                        high-quality solutions
+                                                    </p>
+                                                    <p>
+                                                        With a keen eye for user experience, I aim to create
+                                                        intuitive and user-friendly applications that
+                                                        positively impact end-users. My proficiency in
+                                                        front-end and back-end development, coupled with my
+                                                        understanding of RESTful architecture, enables me to
+                                                        build seamless and scalable applications.
+                                                    </p>
+                                                    <p>
+                                                        Working both independently and as part of a
+                                                        collaborative team, I thrive in dynamic
+                                                        environments, embracing challenges and deadlines
+                                                        with enthusiasm. My passion for clean and
+                                                        maintainable code drives me to contribute actively
+                                                        to GitHub repositories, following best practices and
+                                                        encouraging code reviews
+                                                    </p>
+
+                                                    <div class="social-icon-list">
+                                                        <ul>
+                                                            <li style="--i:#050505;--j:#050505;">
+                                                                <a href="https://github.com/ElvisMugisha" target="_blank">
+                                                                    <span class="icon">
+                                                                        <i class="fa-brands fa-github"></i>
+                                                                    </span>
+                                                                    <!-- <span class="titulo">GitHub</span> -->
+                                                                </a>
+                                                            </li>
+
+                                                            <li style="--i:#0072b1; --j:#0072b1;">
+                                                                <a href="https://www.linkedin.com/in/elvis-mugisha-a846b1230/" target="_blank">
+                                                                    <span class="icon">
+                                                                        <i class="fa-brands fa-linkedin-in"></i>
+                                                                    </span>
+                                                                    <!-- <span class="titulo">LinkedIn</span> -->
+                                                                </a>
+                                                            </li>
+
+                                                            <li style="--i:#cd486b; --j:#cd486b;">
+                                                                <a href="https://www.instagram.com/mugisha_elvis1/" target="_blank">
+                                                                    <span class="icon">
+                                                                        <i class="fa-brands fa-instagram"></i>
+                                                                    </span>
+                                                                    <!-- <span class="titulo">Instagram</span> -->
+                                                                </a>
+                                                            </li>
+
+                                                            <li style="--i:#3b5998; --j:#3b5998;">
+                                                                <a href="https://www.facebook.com/Elvibello10" target="_blank">
+                                                                    <span class="icon">
+                                                                        <i class="fa-brands fa-facebook"></i>
+                                                                    </span>
+                                                                    <!-- <span class="titulo">Facebook</span> -->
+                                                                </a>
+                                                            </li>
+
+                                                            <li style="--i:#00acee; --j:#00acee;">
+                                                                <a href="https://twitter.com/mugisha_elvis1" target="_blank">
+                                                                    <span class="icon">
+                                                                        <i class="fa-brands fa-x-twitter"></i>
+                                                                    </span>
+                                                                    <!-- <span class="titulo">Twitter</span> -->
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <nav>
+                                                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                                        <button
+                                                            class="nav-link"
+                                                            id="nav-profile-tab"
+                                                            data-bs-toggle="tab"
+                                                            data-bs-target="#nav-profile"
+                                                            type="button"
+                                                            role="tab"
+                                                            aria-controls="nav-profile"
+                                                            aria-selected="false">
+                                                            Profile
+                                                        </button>
+
+                                                        <button
+                                                            class="nav-link active"
+                                                            id="nav-skills-tab"
+                                                            data-bs-toggle="tab"
+                                                            data-bs-target="#nav-skills"
+                                                            type="button"
+                                                            role="tab"
+                                                            aria-controls="nav-skills"
+                                                            aria-selected="true">
+                                                            Skills
+                                                        </button>
+
+                                                        <button
+                                                            class="nav-link"
+                                                            id="nav-education-tab"
+                                                            data-bs-toggle="tab"
+                                                            data-bs-target="#nav-education"
+                                                            type="button"
+                                                            role="tab"
+                                                            aria-controls="nav-education"
+                                                            aria-selected="false">
+                                                            Education
+                                                        </button>
+
+                                                        <button
+                                                            class="nav-link"
+                                                            id="nav-hobbies-tab"
+                                                            data-bs-toggle="tab"
+                                                            data-bs-target="#nav-hobbies"
+                                                            type="button"
+                                                            role="tab"
+                                                            aria-controls="nav-hobbies"
+                                                            aria-selected="false">
+                                                            Interested
+                                                        </button>
+
+                                                    </div>
+                                                </nav>
+
+                                                <div class="tab-content" id="nav-tabContent">
+                                                    <div
+                                                        class="tab-pane fade content"
+                                                        id="nav-profile"
+                                                        role="tabpanel"
+                                                        aria-labelledby="nav-profile-tab"
+                                                        tabindex="0">
+
+                                                        <span>
+                                                            Name
+                                                            <div class="animated-word">
+                                                                <div class="letter">E</div>
+                                                                <div class="letter">L</div>
+                                                                <div class="letter">V</div>
+                                                                <div class="letter">I</div>
+                                                                <div class="letter">S</div>
+                                                                <div class="letter">&nbsp;</div>
+                                                                <div class="letter">M</div>
+                                                                <div class="letter">u</div>
+                                                                <div class="letter">g</div>
+                                                                <div class="letter">i</div>
+                                                                <div class="letter">s</div>
+                                                                <div class="letter">h</div>
+                                                                <div class="letter">a</div>
+                                                            </div>
+                                                        </span>
+
+                                                        <div class="profile-p">
+                                                            <span>
+                                                                Profile
+                                                                <div class="animated-word">
+                                                                    Software developer
+                                                                </div>
+                                                            </span>
+                                                        </div>
+
+                                                        <div class="profile-p">
+                                                            <span>
+                                                                E-mail
+                                                                <div class="animated-word">
+                                                                    mugishaelvis104@gmail.com
+                                                                </div>
+                                                            </span>
+                                                        </div>
+
+                                                        <div class="profile-p">
+                                                            <span>
+                                                                Contact
+                                                                <div class="animated-word">
+                                                                    +250 7805 279 73
+                                                                </div>
+                                                            </span>
+                                                        </div>
+
+                                                        <br>
+
+                                                        <div class="profile-p">
+                                                            <a class="contact-me" href="mailto:mugishaelvis104@gmail.com">
+                                                                Contact Me
+                                                            </a>
+                                                        </div>
+
+                                                        <br>
+
+                                                    </div>
+
+                                                    <div
+                                                        class="tab-pane fade show active"
+                                                        id="nav-skills"
+                                                        role="tabpanel"
+                                                        aria-labelledby="nav-skills-tab"
+                                                        tabindex="0">
+
+                                                        <div class="skills">
+
+                                                            <div class="skill">
+                                                                <p>Python</p>
+                                                            </div>
+
+                                                            <div class="skill">
+                                                                <p>Java</p>
+                                                            </div>
+
+                                                            <div class="skill">
+                                                                <p>Django</p>
+                                                            </div>
+
+                                                            <div class="skill">
+                                                                <p>Spring Boot</p>
+                                                            </div>
+
+                                                            <div class="skill">
+                                                                <p>REST APIs</p>
+                                                            </div>
+
+                                                            <div class="skill">
+                                                                <p>Bootstrap</p>
+                                                            </div>
+
+                                                            <div class="skill">
+                                                                <p>MySQL</p>
+                                                            </div>
+
+                                                            <div class="skill">
+                                                                <p>AWS</p>
+                                                            </div>
+
+                                                            <div class="skill">
+                                                                <p>Angular</p>
+                                                            </div>
+
+                                                            <div class="skill">
+                                                                <p>Flutter</p>
+                                                            </div>
+
+                                                            <div class="skill">
+                                                                <p>GitHub</p>
+                                                            </div>
+
+                                                            <div class="skill">
+                                                                <p>Bubble.io</p>
+                                                            </div>
+
+                                                            <div class="skill">
+                                                                <p>Glide App</p>
+                                                            </div>
+
+                                                            <div class="skill">
+                                                                <p>JavaScript</p>
+                                                            </div>
+
+                                                            <div class="skill">
+                                                                <p>Rest Services</p>
+                                                            </div>
+
+                                                            <div class="skill">
+                                                                <p>HTML</p>
+                                                            </div>
+
+                                                            <div class="skill">
+                                                                <p>CSS</p>
+                                                            </div>
+
+                                                            <div class="skill">
+                                                                <p>Dart</p>
+                                                            </div>
+
+                                                        </div>
+
+                                                        <br>
+
+                                                    </div>
+
+                                                    <div
+                                                        class="tab-pane fade"
+                                                        id="nav-education"
+                                                        role="tabpanel"
+                                                        aria-labelledby="nav-education-tab"
+                                                        tabindex="0">
+                                                        <div class="overflow-auto1">
+                                                            <div class="educations">
+                                                                <div class="education">
+                                                                    <h1>Bachelor of science</h1>
+                                                                    <p>
+                                                                        Software engineering -
+                                                                        <span>INES Ruhengeri</span>
+                                                                    </p>
+                                                                    <p class="calendar">
+                                                                        <i class="fa-regular fa-calendar-days"></i>
+                                                                        Sept 2018 - March 2022
+                                                                    </p>
+                                                                </div>
+                                                                <br>
+
+                                                                <div class="education">
+                                                                    <h1>Innov8 Java Training</h1>
+                                                                    <p>
+                                                                        Basic and advanced Java -
+                                                                        <span>INNOV8POD</span>
+                                                                    </p>
+                                                                    <p class="calendar">
+                                                                        <i class="fa-regular fa-calendar-days"></i>
+                                                                        Sept 2022 - Nov 2022
+                                                                    </p>
+                                                                </div>
+                                                                <br>
+
+                                                                <div class="education">
+                                                                    <h1>Agile methodologies</h1>
+                                                                    <p>
+                                                                        Agile way of working -
+                                                                        <span>INNOV8POD</span>
+                                                                    </p>
+                                                                    <p class="calendar">
+                                                                        <i class="fa-regular fa-calendar-days"></i>
+                                                                        Feb 2022 - April 2022
+                                                                    </p>
+                                                                </div>
+
+                                                                <br>
+                                                                <div class="education">
+                                                                    <h1>High school Degree</h1>
+                                                                    <p>
+                                                                        Math Chemistry & Biology -
+                                                                        <span>St Matthew</span>
+                                                                    </p>
+                                                                    <p class="calendar">
+                                                                        <i class="fa-regular fa-calendar-days"></i>
+                                                                        Jan 2015 - Dec 2017
+                                                                    </p>
+                                                                </div>
+                                                                <br>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div
+                                                        class="tab-pane fade"
+                                                        id="nav-hobbies"
+                                                        role="tabpanel"
+                                                        aria-labelledby="nav-hobbies-tab"
+                                                        tabindex="0">
+
+                                                        <div class="skills">
+
+                                                            <div class="skill">
+                                                                <p>
+                                                                    <i class="fa-solid fa-chalkboard-user"></i>
+                                                                    Learning
+                                                                </p>
+                                                            </div>
+
+                                                            <div class="skill">
+                                                                <p>
+                                                                    <i class="fa-solid fa-hands-praying"></i>
+                                                                    Praying
+                                                                </p>
+                                                            </div>
+
+                                                            <div class="skill">
+                                                                <p>
+                                                                    <i class="fa-solid fa-film"></i>
+                                                                    Movies
+                                                                </p>
+                                                            </div>
+
+                                                            <div class="skill">
+                                                                <p>
+                                                                    <i class="fa-solid fa-headphones"></i>
+                                                                    Music
+                                                                </p>
+                                                            </div>
+
+                                                            <div class="skill">
+                                                                <p>
+                                                                    <i class="fa-solid fa-terminal"></i>
+                                                                    Coding
+                                                                </p>
+                                                            </div>
+
+                                                        </div>
+                                                        <br>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {% endif %}
+
+                                        {% endfor %}
+                                    </div>
+
+                                    <div
+                                        class="tab-pane fade"
+                                        id="v-pills-experience"
+                                        role="tabpanel"
+                                        aria-labelledby="v-pills-experience-tab"
+                                        tabindex="0">
+
+                                        <div class="row">
+
+                                            <div class="col-md-8">
+                                                <div class="overflow-auto">
+                                                    <div class="experiences">
+
+                                                        {% for experience in experiences %}
+                                                        <div class="experience">
+                                                            <h1>
+                                                                {{ experience.company|upper }} -
+                                                                <span> {{ experience.location|capfirst }} </span>
+                                                            </h1>
+                                                            <p class="title"> {{ experience.role|capfirst }} </p>
+                                                            <p class="date">
+                                                                <i class="fa-regular fa-calendar-days"></i>
+                                                                <span> {{ experience.start_date|capfirst }} - {{ experience.end_date|capfirst }} </span>
+                                                            </p>
+
+                                                            <div class="tasks">
+                                                                <ul>
+                                                                    {% for expe_info in expe_infos %}
+                                                                    {% if expe_info.experience.id == experience.id %}
+                                                                    <li>
+                                                                        <p> {{ expe_info.description|capfirst }} </p>
+                                                                    </li>
+                                                                    {% endif %}
+                                                                    {% endfor %}
+
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <br>
+                                                        {% endfor %}
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <div class="projects">
+                                                    <h1 class="title">Projects</h1>
+                                                    <hr style="color: #edbbba;">
+                                                    <div class="overflow-auto3">
+                                                        <div class="experience-projects">
+
+                                                            {% for project in projects %}
+                                                            <div class="experience-pro">
+                                                                <h1>
+                                                                    {{ project.project_name }} -
+                                                                    <span>
+                                                                        {{ project.start_date|capfirst }} - {{ project.end_date|capfirst }}
+                                                                    </span>
+                                                                </h1>
+                                                                <p class="project-category"> {{ project.kind }} </p>
+                                                                <p class="project-skill">
+                                                                    Front-end:
+                                                                    {% for front in fronts %}
+                                                                    {% if front.project.id == project.id %}
+                                                                    <span> {{ front.name }} </span>
+                                                                    {% endif %}
+                                                                    {% endfor %}
+                                                                </p>
+                                                                <p class="project-skill">
+                                                                    Back-end:
+                                                                    {% for back in backs %}
+                                                                    {% if back.project.id == project.id %}
+                                                                    <span> {{ back.name }} </span>
+                                                                    {% endif %}
+                                                                    {% endfor %}
+                                                                </p>
+                                                            </div>
+                                                            {% endfor %}
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        class="tab-pane fade"
+                                        id="v-pills-service"
+                                        role="tabpanel"
+                                        aria-labelledby="v-pills-service-tab"
+                                        tabindex="0">
+
+                                        <div class="row row-flip-card">
+
+                                            {% for service in services %}
+                                            <div class="col-md-4">
+                                                <div class="card flip-card">
+                                                    <div class="flip-card-inner">
+
+                                                        <div class="flip-card-front">
+                                                            <i class=" {{ service.icon }} "></i>
+                                                            <h1> {{ service.service_name|capfirst }} </h1>
+                                                        </div>
+
+                                                        <div class="flip-card-back">
+                                                            <p> {{ service.description|capfirst }} </p>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {% endfor %}
+
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        class="tab-pane fade"
+                                        id="v-pills-portfolio"
+                                        role="tabpanel"
+                                        aria-labelledby="v-pills-portfolio-tab"
+                                        tabindex="0" >
+
+                                        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+
+                                            <li class="nav-item" role="presentation">
+                                                <button
+                                                    class="nav-link active"
+                                                    id="pills-all-tab"
+                                                    data-bs-toggle="pill"
+                                                    data-bs-target="#pills-all"
+                                                    type="button"
+                                                    role="tab"
+                                                    aria-controls="pills-all"
+                                                    aria-selected="true"
+                                                >All</button>
+                                            </li>
+
+                                            {% for category in categories %}
+                                            <li class="nav-item" role="presentation">
+                                                <button
+                                                    class="nav-link"
+                                                    id="pills-{{ category.slug }}-tab"
+                                                    data-bs-toggle="pill"
+                                                    data-bs-target="#pills-{{ category.slug }}"
+                                                    type="button"
+                                                    role="tab"
+                                                    aria-controls="pills-{{ category.slug }}"
+                                                    aria-selected="false"
+                                                > {{ category.name|capfirst }} </button>
+                                            </li>
+                                            {% endfor %}
+
+                                        </ul>
+
+                                        <div class="tab-content overflow-auto2" id="pills-tabContent">
+                                            <div
+                                                class="tab-pane fade show active"
+                                                id="pills-all"
+                                                role="tabpanel"
+                                                aria-labelledby="pills-all-tab"
+                                                tabindex="0">
+
+                                                <div class="card-projects">
+                                                    <div class="row mb-4">
+
+                                                        {% for project in projects %}
+                                                        {% if project %}
+                                                        <div class="col-md-4">
+                                                            <div class="card bg-dark">
+                                                                <div class="card-body p-8">
+
+                                                                    {% comment %} <p style="color: #edbbba;" class="p-card-title" data-bs-toggle="modal" data-bs-target="#{{ project.slug }}" title="Quick view">
+                                                                        {{ project.project_name }}
+                                                                        <span> {{ project.start_date|capfirst }} - {{ project.end_date|capfirst }} </span>
+                                                                    </p> {% endcomment %}
+
+                                                                    <p style="color: #edbbba;" class="p-card-title">
+                                                                        {{ project.project_name }}
+                                                                        <span> {{ project.start_date|capfirst }} - {{ project.end_date|capfirst }} </span>
+                                                                    </p>
+
+                                                                    <img
+                                                                    class="project-img"
+                                                                    src="{{ project.image.url }}"
+                                                                    data-bs-toggle="collapse"
+                                                                    data-bs-target="#{{ project.slug }}-technology"
+                                                                    aria-expanded="false"
+                                                                    aria-controls="{{ project.slug }}-technology"
+                                                                    >
+
+                                                                    <p class="collapse p-descr" id="{{ project.slug }}-technology">
+                                                                        Front-end:
+                                                                        {% for front in fronts %}
+                                                                        {% if front.project.id == project.id %}
+                                                                        <span style="color: #3b3b3b;"> {{ front.name }} </span>
+                                                                        {% endif %}
+                                                                        {% endfor %}
+                                                                    </p>
+                                                                    <p class="collapse p-descr" id="{{ project.slug }}-technology" style="margin-top: -0.5em">
+                                                                        Back-end:
+                                                                        {% for back in backs %}
+                                                                            {% if back.project.id == project.id %}
+                                                                                <span style="color: #3b3b3b;"> {{ back.name }} </span>
+                                                                            {% endif %}
+                                                                        {% endfor %}
+                                                                    </p>
+                                                                    <p class="project-links">
+                                                                        <a class="project-link" href="{{ project.github }}" target="_blank">
+                                                                            GitHub
+                                                                        </a>
+                                                                        <a class="project-link" href="{{ project.live }}" target="_blank">
+                                                                            Live
+                                                                        </a>
+                                                                    </p>
+
+                                                                    <!-- Modal -->
+                                                                    {% comment %} <div class="modal fade" id="{{ project.slug }}" tabindex="-1" aria-labelledby="{{ project.slug }}Label" aria-hidden="true">
+                                                                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                                                            <div class="modal-content bg-dark">
+                                                                                <div class="modal-header">
+                                                                                    <h5 class="modal-title text-white" id="{{ project.slug }}Label">
+                                                                                        {{ project.project_name }}
+                                                                                    </h5>
+                                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                                </div>
+                                                                                <div class="modal-body">
+                                                                                    <div class="row">
+                                                                                        <div class="col-md-6">
+                                                                                            <img class="project-img" src="{{ project.image.url }}">
+                                                                                        </div>
+                                                                                        <div class="col-md-6">
+                                                                                            <p class="p-descr" id="{{ project.slug }}-technology">
+                                                                                                Front-end:
+                                                                                                {% for front in fronts %}
+                                                                                                {% if front.project.id == project.id %}
+                                                                                                <span style="color: #3b3b3b;"> {{ front.name }} </span>
+                                                                                                {% endif %}
+                                                                                                {% endfor %}
+                                                                                            </p>
+                                                                                            <p class="p-descr" id="{{ project.slug }}-technology" style="margin-top: -0.5em">
+                                                                                                Back-end:
+                                                                                                {% for back in backs %}
+                                                                                                    {% if back.project.id == project.id %}
+                                                                                                        <span style="color: #3b3b3b;"> {{ back.name }} </span>
+                                                                                                    {% endif %}
+                                                                                                {% endfor %}
+                                                                                            </p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                                                        Close
+                                                                                    </button>
+                                                                                    <button type="button" class="btn btn-primary">
+                                                                                        Save changes
+                                                                                    </button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div> {% endcomment %}
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        
+
+                                                        {% endif %}
+                                                        {% endfor %}
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            {% for category in categories %}
+
+                                            <div
+                                                class="tab-pane fade"
+                                                id="pills-{{ category.slug }}"
+                                                role="tabpanel"
+                                                aria-labelledby="pills-{{ category.slug }}-tab"
+                                                tabindex="0">
+
+                                                <div class="card-projects">
+                                                    <div class="row">
+
+                                                        {% for project in projects %}
+                                                        {% if project.category.id == category.id %}
+
+                                                        <div class="col-md-4">
+                                                            <div class="card bg-dark">
+                                                                <div class="card-body p-8">
+                                                                    <p style="color: #edbbba;" class="p-card-title">
+                                                                        {{ project.project_name }}
+                                                                        <span> {{ project.start_date|capfirst }} - {{ project.end_date|capfirst }} </span>
+                                                                    </p>
+                                                                    <img
+                                                                    class="project-img"
+                                                                    src="{{ project.image.url }}"
+                                                                    data-bs-toggle="collapse"
+                                                                    data-bs-target="#{{ project.slug }}-technology"
+                                                                    aria-expanded="false"
+                                                                    aria-controls="{{ project.slug }}-technology"
+                                                                    >
+                                                                    <p class="collapse p-descr" id="{{ project.slug }}-technology">
+                                                                        Front-end:
+                                                                        {% for front in fronts %}
+                                                                        {% if front.project.id == project.id %}
+                                                                        <span style="color: #3b3b3b;"> {{ front.name }} </span>
+                                                                        {% endif %}
+                                                                        {% endfor %}
+                                                                    </p>
+                                                                    <p class="collapse p-descr" id="{{ project.slug }}-technology" style="margin-top: -0.5em">
+                                                                        Back-end:
+                                                                        {% for back in backs %}
+                                                                            {% if back.project.id == project.id %}
+                                                                                <span style="color: #3b3b3b;"> {{ back.name }} </span>
+                                                                            {% endif %}
+                                                                        {% endfor %}
+                                                                    </p>
+                                                                    <p class="project-links">
+                                                                        <a class="project-link" href="{{ project.github }}">
+                                                                            GitHub
+                                                                        </a>
+                                                                        <a class="project-link" href="{{ project.live }}">
+                                                                            Live
+                                                                        </a>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        {% endif %}
+                                                        {% endfor %}
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/b3985b468f.js" crossorigin="anonymous"></script>
+    <script src="{% static 'assets/js/scripts.js' %}"></script>
+
+</body>
+</html>
