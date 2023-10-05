@@ -7,7 +7,7 @@
         <meta name="description" content="Software developer | Full-stack developer | Bubble developer |Front-end developer | Back-end developer | Freelancer">
         <meta name="author" content="Elvis Mugisha">
 
-        <title>Elvis Mugisha</title>
+        <title> Elvis Mugisha </title>
 
         <link rel="icon" type="image/png" href="{% static 'assets/img/favicon.png' %}">
         <link
@@ -985,6 +985,7 @@
                                             </li>
 
                                             {% for category in categories %}
+                                            {% if category %}
                                             <li class="nav-item" role="presentation">
                                                 <button
                                                     class="nav-link"
@@ -997,6 +998,7 @@
                                                     aria-selected="false"
                                                 > {{ category.name|capfirst }} </button>
                                             </li>
+                                            {% endif %}
                                             {% endfor %}
 
                                         </ul>
@@ -1023,9 +1025,16 @@
                                                                         <span> {{ project.start_date|capfirst }} - {{ project.end_date|capfirst }} </span>
                                                                     </p> {% endcomment %}
 
-                                                                    <p style="color: #edbbba;" class="p-card-title">
+                                                                    <p class="p-card-title">
                                                                         {{ project.project_name }}
-                                                                        <span> {{ project.start_date|capfirst }} - {{ project.end_date|capfirst }} </span>
+
+                                                                        {% if project.status %}
+                                                                        <span style="font-weight: bold; color: lightgreen;"> Completed </span>
+                                                                        {% else %}
+                                                                        <span style="font-weight: bold; color: white;"> In Development </span>
+                                                                        {% endif %}
+
+                                                                        {% comment %} <span> {{ project.start_date|capfirst }} - {{ project.end_date|capfirst }} </span> {% endcomment %}
                                                                     </p>
 
                                                                     <img
@@ -1054,12 +1063,19 @@
                                                                         {% endfor %}
                                                                     </p>
                                                                     <p class="project-links">
+
+                                                                        {% if project.github %}
                                                                         <a class="project-link" href="{{ project.github }}" target="_blank">
                                                                             GitHub
                                                                         </a>
+                                                                        {% endif %}
+
+                                                                        {% if project.live %}
                                                                         <a class="project-link" href="{{ project.live }}" target="_blank">
                                                                             Live
                                                                         </a>
+                                                                        {% endif %}
+
                                                                     </p>
 
                                                                     <!-- Modal -->
@@ -1140,9 +1156,16 @@
                                                         <div class="col-md-4">
                                                             <div class="card bg-dark">
                                                                 <div class="card-body p-8">
-                                                                    <p style="color: #edbbba;" class="p-card-title">
+                                                                    <p class="p-card-title">
                                                                         {{ project.project_name }}
-                                                                        <span> {{ project.start_date|capfirst }} - {{ project.end_date|capfirst }} </span>
+
+                                                                        {% if project.status %}
+                                                                        <span style="font-weight: bold; color: lightgreen;"> Completed </span>
+                                                                        {% else %}
+                                                                        <span style="font-weight: bold; color: white;"> In Development </span>
+                                                                        {% endif %}
+
+                                                                        {% comment %} <span> {{ project.start_date|capfirst }} - {{ project.end_date|capfirst }} </span> {% endcomment %}
                                                                     </p>
                                                                     <img
                                                                     class="project-img"
@@ -1169,12 +1192,19 @@
                                                                         {% endfor %}
                                                                     </p>
                                                                     <p class="project-links">
-                                                                        <a class="project-link" href="{{ project.github }}">
+
+                                                                        {% if project.github %}
+                                                                        <a class="project-link" href="{{ project.github }}" target="_blank">
                                                                             GitHub
                                                                         </a>
-                                                                        <a class="project-link" href="{{ project.live }}">
+                                                                        {% endif %}
+
+                                                                        {% if project.live %}
+                                                                        <a class="project-link" href="{{ project.live }}" target="_blank">
                                                                             Live
                                                                         </a>
+                                                                        {% endif %}
+
                                                                     </p>
                                                                 </div>
                                                             </div>

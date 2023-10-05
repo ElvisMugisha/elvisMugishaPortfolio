@@ -56,9 +56,10 @@ class BackEndInline(admin.TabularInline):
 class ProjectAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('project_name',)}
     list_display = (
-        'project_name', 'category', 'kind', 'start_date', 'end_date'
+        'project_name', 'category', 'kind', 'status', 'start_date', 'end_date'
     )
-    list_filter = ('category',)
+    list_filter = ('category', 'status',)
+    list_editable = ('status',)
     inlines = [
         FrontEndInline, BackEndInline
     ]
