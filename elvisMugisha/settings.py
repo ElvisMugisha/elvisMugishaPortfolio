@@ -4,9 +4,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-c^^ez43c(h%$iw7-z(6pl+m_!o$-v&it$t=qkq=pxb1_myfvwl'
 
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'https://elvis-mugisha.onrender.com']
 
 
 # Application definition
